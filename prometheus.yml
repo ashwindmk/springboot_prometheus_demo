@@ -1,0 +1,18 @@
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+
+  # Scrape Prometheus itself every 5 seconds.
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Scrape the Node Exporter every 5 seconds.
+  - job_name: 'spring-boot'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['e18d061847c8.ngrok.io']
+    metrics_path: '/actuator/prometheus'
